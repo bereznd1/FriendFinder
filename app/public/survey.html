@@ -206,7 +206,7 @@
 
                 <hr>
 
-                <a href="">API Friends List</a> |
+                <a href="/api/friends">API Friends List</a> |
                 <a href="">Github Repo</a>
 
                 <br>
@@ -218,6 +218,64 @@
 
 
     </div>
+
+
+    <script type="text/javascript">
+
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+
+            // Here we grab the form elements
+            var newMember = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("#Q1").val().trim(),
+                    $("#Q2").val().trim(),
+                    $("#Q3").val().trim(),
+                    $("#Q4").val().trim(),
+                    $("#Q5").val().trim(),
+                    $("#Q6").val().trim(),
+                    $("#Q7").val().trim(),
+                    $("#Q8").val().trim(),
+                    $("#Q9").val().trim(),
+                    $("#Q10").val().trim()
+                ]
+            };
+
+            console.log(newMember);
+
+            // This line is the magic. It"s very similar to the standard ajax function we used.
+            // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+            // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+            // depending on if a tables is available or not.
+
+            $.post("/api/friends", newMember,
+                function (data) {
+
+                    console.log("posted");
+
+                    // Clear the form when submitting
+                    $("#name").val("");
+                    $("#photo").val("");
+                    $("#Q1").val(""),
+                    $("#Q2").val(""),
+                    $("#Q3").val(""),
+                    $("#Q4").val(""),
+                    $("#Q5").val(""),
+                    $("#Q6").val(""),
+                    $("#Q7").val(""),
+                    $("#Q8").val(""),
+                    $("#Q9").val(""),
+                    $("#Q10").val("")
+
+                });
+
+        });
+
+
+
+    </script>
 
 </body>
 
