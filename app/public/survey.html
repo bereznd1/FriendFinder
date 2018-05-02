@@ -223,23 +223,41 @@
     <script type="text/javascript">
 
         $("#submit").on("click", function (event) {
+
             event.preventDefault();
+
+
+
+            var Q1 = $("#Q1").val().trim();
+            var Q2 = $("#Q2").val().trim();
+            var Q3 = $("#Q3").val().trim();
+            var Q4 = $("#Q4").val().trim();
+            var Q5 = $("#Q5").val().trim();
+            var Q6 = $("#Q6").val().trim();
+            var Q7 = $("#Q7").val().trim();
+            var Q8 = $("#Q8").val().trim();
+            var Q9 = $("#Q9").val().trim();
+            var Q10 = $("#Q10").val().trim();
+
 
             // Here we grab the form elements
             var newMember = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
                 scores: [
-                    $("#Q1").val().trim(),
-                    $("#Q2").val().trim(),
-                    $("#Q3").val().trim(),
-                    $("#Q4").val().trim(),
-                    $("#Q5").val().trim(),
-                    $("#Q6").val().trim(),
-                    $("#Q7").val().trim(),
-                    $("#Q8").val().trim(),
-                    $("#Q9").val().trim(),
-                    $("#Q10").val().trim()
+
+                    Number(Q1),
+                    Number(Q2),
+                    Number(Q3),
+                    Number(Q4),
+                    Number(Q5),
+                    Number(Q6),
+                    Number(Q7),
+                    Number(Q8),
+                    Number(Q9),
+                    Number(Q10)
+
+
                 ]
             };
 
@@ -253,23 +271,25 @@
             $.post("/api/friends", newMember,
                 function (data) {
 
-                    console.log("posted");
+                    console.log(data);
 
-                    // Clear the form when submitting
-                    $("#name").val("");
-                    $("#photo").val("");
-                    $("#Q1").val(""),
-                    $("#Q2").val(""),
-                    $("#Q3").val(""),
-                    $("#Q4").val(""),
-                    $("#Q5").val(""),
-                    $("#Q6").val(""),
-                    $("#Q7").val(""),
-                    $("#Q8").val(""),
-                    $("#Q9").val(""),
-                    $("#Q10").val("")
 
                 });
+
+
+            // Clear the form when submitting
+            $("#name").val("");
+            $("#photo").val("");
+            $("#Q1").val(""),
+                $("#Q2").val(""),
+                $("#Q3").val(""),
+                $("#Q4").val(""),
+                $("#Q5").val(""),
+                $("#Q6").val(""),
+                $("#Q7").val(""),
+                $("#Q8").val(""),
+                $("#Q9").val(""),
+                $("#Q10").val("")
 
         });
 
