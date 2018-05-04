@@ -1,25 +1,16 @@
-// DEPENDENCIES
-// We need to include the path package to get the correct file path for our html
-// ===============================================================================
+//Sets up a dependency on the "path" npm package so that html files can be rendered by the server
 var path = require("path");
 
+//Exports the various server functions so that they can be used in the "server.js" file
+module.exports = function (app) {
 
-// ===============================================================================
-// ROUTING
-// ===============================================================================
+    //Ensures that when a user enters the "/survey" url in their browser, the survey page is displayed
+    app.get("/survey", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+    });
 
-module.exports = function(app) {
-  // HTML GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases the user is shown an HTML page of content
-  // ---------------------------------------------------------------------------
-
-  app.get("/survey", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
-  });
-
-  // If no matching route is found default to home
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
+    //If the user enters any other url besides "/survey", the home page is displayed by default
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
 };

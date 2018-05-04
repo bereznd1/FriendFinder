@@ -1,18 +1,15 @@
+//Allows this file to use the object data in the friends.js file
 var friendData = require("../data/friends");
 
-
+//Exports the various server functions so that they can be used in the "server.js" file
 module.exports = function (app) {
-    // API GET Requests
-    // Below code handles when users "visit" a page.
-    // In each of the below cases when a user visits a link
-    // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
-    // ---------------------------------------------------------------------------
 
+    //Sets up a route that displays raw JSON information for all members currently on the server when the "/api/friends" url is hit by the browser
     app.get("/api/friends", function (req, res) {
         res.json(friendData);
     });
 
-
+    //Sets up what happens when new member data is posted to the server
     app.post("/api/friends", function (req, res) {
 
         //This holds the new member object that was submitted on the survey page
@@ -20,7 +17,6 @@ module.exports = function (app) {
 
         //This sets up an array to hold all the total differences between the new user & each other user on the server
         var totalDiffArray = [];
-
 
         //This loop runs through all the other users on the server
         for (var i = 0; i < friendData.length; i++) {
@@ -46,9 +42,6 @@ module.exports = function (app) {
             //Pushes the total difference value into the array set up previously to hold all the total differences
             totalDiffArray.push(totalDifference);
 
-
-
-
         }
 
         //Finds the least total difference within the totalDiffArray
@@ -56,7 +49,6 @@ module.exports = function (app) {
 
         //Sets up an empty array to hold the entire user object of whichever user has the least total difference with the new user
         var bestMatch = [];
-
 
         //Loops through all the other users on the server besides the new user 
         for (var i = 0; i < friendData.length; i++) {
@@ -66,23 +58,21 @@ module.exports = function (app) {
 
                 //Push that user's entire user object into the best match array
                 bestMatch.push(friendData[i]);
-
             }
-
         }
 
         //Loops through all the other users on the server besides the new user 
         for (var i = 0; i < friendData.length; i++) {
 
+            //Pops off the last item in that user's scores array (the total difference value between that user and the new user) so that it doesn't interfere with future calculations
             friendData[i].scores.pop();
 
         }
 
-        //Send the first item in the bestMatch array to the front end so it can be displayed in the modal
+        //Sends the first item in the bestMatch array to the front end so it can be displayed in the modal
         res.json(bestMatch[0]);
-        
 
-        //Push the new user into the array holding all users
+        //Pushes the new user into the array holding all users
         friendData.push(newUser);
     });
 

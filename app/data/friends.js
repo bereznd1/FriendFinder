@@ -1,9 +1,8 @@
-
+//Array that will hold each user's submitted information. First user is predefined as a sample.
 var friendsArray = [
-
     {
         name: "Ahmed",
-        photo: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        photo: "http://orig00.deviantart.net/24ea/f/2014/123/5/a/the_sultan_ahmed_iii_by_eduartinehistorise-d7gytgx.jpg",
         scores: [
             5,
             1,
@@ -17,8 +16,7 @@ var friendsArray = [
             1
         ]
     }
-
 ];
 
-// Note how we export the array. This makes it accessible to other files using require.
+//Exports the array of users to make it accessible to other files, using require.
 module.exports = friendsArray;
