@@ -78,24 +78,9 @@ module.exports = function (app) {
 
         }
 
-
-        var bestMatchArray = {
-
-            bestMatch: bestMatch
-        }
-
+        //Send the first item in the bestMatch array to the front end so it can be displayed in the modal
+        res.json(bestMatch[0]);
         
-
-        module.exports = bestMatchArray;
-
-
-        // console.log(leastDifference);
-
-        // console.log(bestMatch);
-
-        //Display other information about the user with the least total differences
-        console.log(bestMatch[0].name);
-
 
         //Push the new user into the array holding all users
         friendData.push(newUser);
