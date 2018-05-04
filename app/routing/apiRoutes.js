@@ -79,12 +79,22 @@ module.exports = function (app) {
         }
 
 
-        console.log(leastDifference);
+        var bestMatchArray = {
 
-        console.log(bestMatch);
+            bestMatch: bestMatch
+        }
+
+        
+
+        module.exports = bestMatchArray;
+
+
+        // console.log(leastDifference);
+
+        // console.log(bestMatch);
 
         //Display other information about the user with the least total differences
-        console.log(bestMatch[0]);
+        console.log(bestMatch[0].name);
 
 
         //Push the new user into the array holding all users
