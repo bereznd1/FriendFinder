@@ -4,7 +4,7 @@
 
 [View Live!](http://intense-fortress-12650.herokuapp.com/)
 
-## Brief Description
+## Brief Description  
 
 The **ExpressJS/Node "Friend Finder" App** allows users to take a short, 10-question survey about their personality & then submit these answers, which sends an **AJAX request** to a server that is created using **ExpressJS**, and **"posts"** their results as a **JSON** object to that server. Their answers are then compared to the answers of every other user who has taken the survey, and the existing user who is the best match with the new user is determined. A **Bootstrap modal** then pops up on the survey page, displaying the name & photo of the best match.
 
